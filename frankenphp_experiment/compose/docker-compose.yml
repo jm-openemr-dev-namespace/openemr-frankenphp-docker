@@ -1,0 +1,64 @@
+version: "3.9"
+
+x-openemr-env: &openemr-env
+  MYSQL_HOST: mysql
+  MYSQL_PORT: 3306
+  MYSQL_ROOT_USER: root
+  MYSQL_ROOT_PASS: root
+  MYSQL_DATABASE: openemr
+  MYSQL_USER: openemr
+  MYSQL_PASS: openemr
+  MANUAL_SETUP: "no"
+  OE_USER: admin
+  OE_PASS: pass
+
+services:
+  mysql:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: openemr
+      MYSQL_USER: openemr
+      MYSQL_PASSWORD: openemr
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  openemr-frankenphp:
+    build:
+      context: ..
+      dockerfile: docker/frankenphp/Dockerfile
+    image: openemr/frankenphp-experiment:latest
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      <<: *openemr-env
+    ports:
+      - "8080:8080"
+    volumes:
+      - openemr_sites:/var/www/localhost/htdocs/openemr/sites
+      - caddy_state:/data/caddy
+
+  openemr-frankenphp-dev:
+    profiles: ["dev"]
+    extends:
+      service: openemr-frankenphp
+    build:
+      context: ..
+      dockerfile: docker/frankenphp/Dockerfile
+    volumes:
+      - ../openemr-source-code:/var/www/localhost/htdocs/openemr:rw
+      - openemr_sites:/var/www/localhost/htdocs/openemr/sites
+
+volumes:
+  mysql_data:
+  openemr_sites:
+  caddy_state:

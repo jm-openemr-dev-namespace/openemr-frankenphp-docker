@@ -1,0 +1,3 @@
+CONTAINER ID   NAME                                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+80adc8bb1c6b   openemr-baseline-mysql-1              0.26%     380.7MiB / 3.827GiB   9.71%     1.28GB / 4.44GB   30.1MB / 359MB    143
+0e892a2fdcb5   openemr-baseline-openemr-baseline-1   4.15%     807.2MiB / 3.827GiB   20.60%    4.45GB / 1.73GB   1.51GB / 1.67GB   248
