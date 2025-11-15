@@ -43,10 +43,10 @@ Having said that, the big advantage of using FrankenPHP/Caddy is that if we were
 
 If we ever did this then we could write containers like this:
 
-'''
+```
 FROM scratch
 COPY openemr-frankenphp /
 CMD ["/openemr-frankenphp"]
-'''
+```
 
 Which would be significantly smaller than any container images shipped today (would be basically just be the size of the binary) and we'd also be able to run OpenEMR on systems without docker installed or, for that matter, any dependencies installed at all. If we chose to do this then any system capable of running linux-compatible binary executible files would be able to run OpenEMR. 
