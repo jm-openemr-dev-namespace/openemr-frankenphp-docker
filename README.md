@@ -22,7 +22,7 @@ This repo demonstrates the running of OpenEMR via the [Caddy](https://github.com
 
 The script used to generate this table can be found [here](./frankenphp_experiment/benchmarking/results/generate_table.py).
 
-Full results can be found [here](./frankenphp_experiment/benchmarking/results). Benchmarking scripts written using [k6](http://github.com/grafana/k6) can be found [here](./benchmarking/k6-script.js) (NOTE: this script is currently way too simple to be what it should be to properly compare Apache and Caddy and should be improved in the future to really provide good benchmarking abilities) and [here](./benchmarking/run_benchmarks.sh).
+Full results can be found [here](./frankenphp_experiment/benchmarking/results). Benchmarking scripts written using [k6](http://github.com/grafana/k6) can be found [here](./frankenphp_experiment/benchmarking/k6-script.js) (NOTE: this script is currently way too simple to be what it should be to properly compare Apache and Caddy and should be improved in the future to really provide good benchmarking abilities) and [here](./frankenphp_experiment/benchmarking/run_benchmarks.sh).
 
 ## How can I replicate these results?
 
@@ -31,6 +31,7 @@ Full results can be found [here](./frankenphp_experiment/benchmarking/results). 
 3. Run `COMPOSE_PROJECT_NAME=frankenphp-exp docker compose -f frankenphp_experiment/compose/docker-compose.yml up -d`
 4. Run `./frankenphp_experiment/benchmarking/run_benchmarks.sh`
 5. Navigate to `./frankenphp_experiment/benchmarking/results` and see your results.
+6. (Optional) Generate a version of the table seen above based off your specific results using the [generate_table.py script](./frankenphp_experiment/benchmarking/results/generate_table.py)
 
 ## What are the implications vis-a-vis OpenEMR development
 
