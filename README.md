@@ -31,7 +31,7 @@ Full results can be found [here](./frankenphp_experiment/benchmarking/results). 
 3. Run `COMPOSE_PROJECT_NAME=frankenphp-exp docker compose -f frankenphp_experiment/compose/docker-compose.yml up -d`
 4. Run `./frankenphp_experiment/benchmarking/run_benchmarks.sh`
 5. Navigate to `./frankenphp_experiment/benchmarking/results` and see your results.
-6. (Optional) Generate a version of the table seen above based off your specific results using the [generate_table.py script](./frankenphp_experiment/benchmarking/results/generate_table.py)
+6. (Optional) Generate a version of the table seen above based off your most recent results using the [generate_table.py script](./frankenphp_experiment/benchmarking/results/generate_table.py)
 
 ## What are the implications vis-a-vis OpenEMR development
 
