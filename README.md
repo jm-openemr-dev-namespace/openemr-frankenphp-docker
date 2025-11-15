@@ -37,6 +37,8 @@ Full results can be found [here](./frankenphp_experiment/benchmarking/results). 
 
 I'd say it's too early to say. While the initial findings are promising we need to design better benchmarking than what I have currently to really compare the two.
 
+There's also more that can be done to optimize the FrankenPHP/Caddy container (such as adding additional files to `$preloadCandidates` in [frankenphp-worker.php](./openemr-source-code/frankenphp-worker.php)). 
+
 To fully leverage the capabilities of FrankenPHP we would need to leverage its [worker mode](https://frankenphp.dev/docs/worker/) which would allow us to run OpenEMR loaded into memory using [goroutines](https://go.dev/tour/concurrency/1). However, doing that would involve substantial rewrites to huge parts of the OpenEMR codebase.
 
 Having said that, the big advantage of using FrankenPHP/Caddy is that if we were ever interested in doing so we could also use this to create static binaries that serve OpenEMR and require no dependencies: https://frankenphp.dev/docs/static/
